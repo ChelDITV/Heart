@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Animation with Centering</title>
+    <style>
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            border: 0;
+            padding: 0;
+            white-space: nowrap;
+            clip-path: inset(100%);
+            clip: rect(0 0 0 0);
+            overflow: hidden;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            /* Центрирование по горизонтали */
+            align-items: center;
+            /* Центрирование по вертикали */
+            height: 100vh;
+            /* Высота на весь экран */
+            margin: 0;
+            /* Удаление отступов */
+            background-color: #f0f0f0;
+            /* Цвет фона */
+        }
+
+        .heart {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            transform: rotate(-45deg);
+            animation: heartbeat 1s infinite;
+            /* Анимация пульсации */
+        }
+
+        .heart:before,
+        .heart:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border-radius: 50%;
+        }
+
+        .heart:before {
+            top: -50px;
+            left: 0;
+        }
+
+        .heart:after {
+            left: 50px;
+            top: 0;
+        }
+
+        /* Анимация пульсации */
+        @keyframes heartbeat {
+
+            0%,
+            100% {
+                transform: scale(1) rotate(-45deg);
+            }
+
+            50% {
+                transform: scale(1.1) rotate(-45deg);
+            }
+        }
+
+        /* Эффект при наведении */
+        .heart:hover {
+            animation: none;
+            /* Остановка анимации при наведении */
+            transform: scale(1.2) rotate(-45deg);
+            /* Увеличение сердца */
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%);" class="visually-hidden">Анимация
+        сердечка с пульсацией
+    </h1>
+    <div class="heart"></div>
+
+</body>
+
+</html>
